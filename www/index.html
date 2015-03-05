@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">My Helper App</h1>
+      </ion-header-bar>
+      <ion-content>
+
+        <br/>
+        <div>
+        <center>
+          <h2>
+            <div id="myLife">
+              20
+            </div>
+          </h2>
+        </center>
+        </div>
+        
+        <div>
+        <center>
+          <a class="button button-energized" onClick="incDec('-1')">
+              -1
+          </a>
+          &nbsp;&nbsp;
+          <a class="button button-positive" onClick="incDec('+1')">
+              +1
+          </a>
+        </center>
+        </div>
+
+        <br />
+        <div>
+        <center>
+          <a class="button button-energized" onClick="incDec('-5')">
+              -5
+          </a>
+          &nbsp;&nbsp;
+          <a class="button button-positive" onClick="incDec('+5')">
+              +5
+          </a>
+        </center>
+        </div>
+
+        <br />
+        <div>
+        <center>
+          <a class="button button-energized" onClick="rollTheDice()">
+              Roll the Dice
+          </a>
+          &nbsp;&nbsp;
+          <a id="diceRoll" class="button button-balanced">
+              0
+          </a>
+        </center>
+        </div>
+
+        <br/>
+        <div>
+        <center>
+          <a id="reset"  class="button button-full button-assertive" onclick="resetButton()">
+              Reset
+          </a>
+        </center>
+        </div>
+      </ion-content>
+      
+     <div class="bar bar-footer bar-positive">
+        <div class="title">&copy;App By Marie</div>
+     </div>
+     
+    </ion-pane>
+
+    <script typr="text/javascript">
+    
+    // this is script
+        function incDec(plusMinus){
+        var plusMinus = parseInt(plusMinus);
+        
+        //alert(currentLife);
+        var currentLife = parseInt(document.getElementById("myLife").innerHTML) + plusMinus;
+                
+        if(currentLife < 0){
+        currentLife = 0;                
+        }else if(currentLife > 20){
+        currentLife = 20;
+        }
+                        
+        //alert(currentLife);
+        document.getElementById("myLife").innerHTML = currentLife;
+    }
+    
+    function rollTheDice(){
+        document.getElementById("diceRoll").innerHTML = Math.floor(Math.random()* 19 + 1);
+    }
+
+    function resetButton(){
+        var original = 20;
+        document.getElementById("myLife").innerHTML = original;
+        document.getElementById("diceRoll").innerHTML = 0;
+    }
+
+    </script>
+  </body>
+</html>
